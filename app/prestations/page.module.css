@@ -1,0 +1,125 @@
+/* Prestations page styles: banner + spotlights */
+.banner{
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  padding: 6rem 0 3rem;
+  color: var(--color-secondary);
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+/* soft color veil */
+.banner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+.bannerInner{
+  position: relative; /* sit above the overlay */
+  z-index: 1;
+  padding: 1rem 0 2rem;
+}
+
+.major h1{
+  margin: 0 0 0.6rem;
+  display: inline-block;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgba(255,255,255,0.95);
+}
+
+.bannerCopy .muted{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  opacity: 0.95;
+  margin-top: 1rem;
+}
+
+.section{
+  padding: 3rem 0 4rem;
+}
+
+.leadText{ max-width: 80ch; margin-bottom: 1.25rem; 
+margin-left: 3%;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap: 1.25rem;
+}
+
+.spot{
+  display:flex;
+  gap:1rem;
+  align-items:stretch; /* let image and content match heights when possible */
+  flex-direction: row; /* default: image and content side-by-side on desktop */
+}
+
+.imageLink{
+  display:block;
+  flex: 0 0 40%;
+  min-height: 220px; /* ensure a consistent visual block for cover */
+}
+
+.imageLink img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover; /* cover the container */
+  border-radius: 2px;
+}
+
+.content{
+  flex:1 1 64%;
+  margin-left: 3%;
+}
+
+/* keep content above image if overlap occurs */
+.imageLink{ position: relative; z-index: 0; overflow: hidden; flex-shrink: 0; }
+.content{ position: relative; z-index: 1; min-width: 0; }
+
+.prices{
+  margin-top:0.75rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.25rem;
+}
+
+.priceLine{
+  background: rgba(255,255,255,0.04);
+  padding: 0.35rem 0.6rem;
+  border-left: 3px solid rgba(255,255,255,0.08);
+}
+
+.actions{
+  margin-top:0.75rem;
+}
+
+@media (max-width: 880px){
+  .banner{ padding: 3.5rem 0 2rem; }
+  .bannerInner{ padding: 0; }
+  .imageLink{ flex-basis: auto; width:100%; }
+  .spot{ flex-direction: column; }
+  /* ensure alternating order collapses to image -> content on small screens */
+  .list > .spot:nth-child(even){
+    flex-direction: column;
+  }
+  /* explicitly set ordering so every item shows image first then content on mobile */
+  .imageLink{ order: 0; }
+  .content{ order: 1; width:100%; }
+}
+
+/* alternate image left/right on desktop for visual rhythm */
+@media (min-width: 881px) {
+  .list > .spot:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+/* add a bit more space above the section title */
+.section{ padding-top: 4.5rem; }

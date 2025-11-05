@@ -1,0 +1,163 @@
+:root{
+  /* layout */
+  /* increased max width so large-desktop screens get more horizontal room */
+  --container-max-width: 1400px;
+
+  /* color palette (project-specific) */
+  --color-primary: #e6ac91; /* primary background */
+  --color-secondary: #ffffff; /* primary foreground / accents */
+  --footer-bg: #e9b8a1; /* footer background */
+  --input-bg: #ab7f6a; /* input backgrounds & accent titles */
+}
+
+.container{
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Page-level colors */
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+main{
+  /* allow main to take available space so footer sits at the bottom when
+     content is short; when content is long the footer follows content */
+  flex: 1 0 auto;
+}
+
+/* header styles moved to components/Header/Header.module.css */
+
+/* footer styles moved to components/Footer.module.css to keep component styles
+   isolated and compatible with Next.js CSS module usage. */
+
+/* Inputs and small accent titles */
+input, textarea, select {
+  background: var(--input-bg);
+  color: var(--color-secondary);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+.title-accent {
+  display: inline-block;
+  background: var(--input-bg);
+  color: var(--color-secondary);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark){
+  /* Slight adjustments for dark-mode preference; keep the palette similar */
+  .site-header, .site-footer{border-color: rgba(255,255,255,0.06)}
+}
+
+/* -----------------------------
+   Global typographic system
+   - Provides consistent sizes for h1..h4, paragraphs and small helpers
+   - Use system font stack for predictable rendering
+   - Keep high contrast on top of the project's colored background
+   ------------------------------*/
+
+:root{
+  --type-scale-1: 2.25rem; /* h1 */
+  --type-scale-2: 1.5rem;  /* h2 */
+  --type-scale-3: 1.125rem; /* h3 */
+  --type-scale-4: 0.95rem;  /* h4 / small headings */
+  /* measure controls optimal line length for paragraphs. Increased for large screens. */
+  --measure: 75ch;
+}
+
+html,body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1{font-size:var(--type-scale-1);line-height:1.05;margin:0 0 0.5rem;color:var(--color-secondary);}
+h2{font-size:var(--type-scale-2);line-height:1.15;margin:0 0 0.5rem;color:var(--color-secondary);} 
+h3{font-size:var(--type-scale-3);line-height:1.2;margin:0 0 0.5rem;color:var(--color-secondary);} 
+h4{font-size:var(--type-scale-4);line-height:1.25;margin:0 0 0.5rem;color:var(--color-secondary);} 
+
+p{margin:0 0 1rem;max-width:var(--measure);color:rgba(255,255,255,0.95);line-height:1.6}
+
+.subtitle{color:rgba(255,255,255,0.9);font-size:var(--type-scale-4);margin-top:0.25rem}
+.lead{font-size:1.125rem;color:rgba(255,255,255,0.98);}
+
+/* utility spacing for sections */
+.section{padding:3rem 0}
+
+/* small text helpers */
+.muted{color:rgba(255,255,255,0.7);font-size:0.95rem}
+
+/* -----------------------------
+   Shared utility classes
+   - Use these across components to avoid duplicated styles
+   - Keep them small, semantic and predictable
+   ------------------------------*/
+
+/* Reusable heading variant (closest to primary h1 look) */
+.u-heading{
+  font-size:var(--type-scale-1);
+  line-height:1.05;
+  margin:0 0 0.5rem;
+  color:var(--color-secondary);
+  font-weight:800;
+}
+
+/* Reusable section title with underscored accent */
+.u-section-title{
+  display:inline-block;
+  font-size:var(--type-scale-2);
+  margin:0.5rem 0 0.75rem;
+  padding-bottom:0.35rem;
+  border-bottom:3px solid var(--color-secondary);
+  color:var(--color-secondary);
+}
+
+/* Subtitle / minor heading variant */
+.u-subtitle{
+  color:rgba(255,255,255,0.9);
+  font-size:var(--type-scale-4);
+  margin-top:0.25rem;
+}
+
+/* Small utility button that can be reused across components.
+   Prefer combining with component-specific module classes when
+   different visual variants are required. */
+.u-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  border:1px solid var(--color-secondary);
+  color:var(--color-secondary);
+  background:transparent;
+  padding:0.5rem 0.875rem;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  font-weight:600;
+  font-size:smaller;
+  cursor:pointer;
+  transition:color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.u-btn:hover{ color:#000; border-color:#9bf1ff }
+
+
+/* extra-large screens: give even more room for ultra-wide displays */
+@media (min-width: 1600px){
+  :root{
+    --container-max-width: 95%;
+    --measure: 120ch;
+  }
+}
+
+

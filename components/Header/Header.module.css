@@ -1,0 +1,185 @@
+.siteHeader{
+  /* sticky translucent header so you can see background content beneath */
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  /* use a translucent tint of the primary color */
+  background: rgba(230, 172, 145, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Make the global .container element full width when placed inside the header
+   so the logo sits flush to the left on wide screens while keeping mobile
+   behavior unchanged. Uses :global() to target the project's shared container
+   class from this CSS module. */
+.siteHeader :global(.container){
+  max-width: none;
+  width: 100%;
+  margin: 0; /* remove auto centering so content can align left */
+  padding-left: 1rem; /* keep the existing container padding for small gutters */
+  padding-right: 1rem;
+}
+
+.inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.siteTitle{
+  margin: 0.5rem;
+  padding: 0.3rem;
+  font-size: 0.625rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 3px;
+  background-color: var(--color-secondary);
+}
+
+.siteTitle:hover{
+  background-color: #9bf1ff;
+}
+
+.controls{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.siteNav{
+  /* hide inline nav by default — links only visible via the full-page menu */
+  display: none;
+  gap: 1rem;
+}
+
+.siteNav a{
+  color: var(--color-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.siteNav a:hover{
+  text-decoration: underline;
+}
+
+.burgerButton{
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-secondary);
+  border-radius: 6px;
+}
+
+.burgerButton:focus{
+  outline: 2px solid rgba(0,0,0,0.08);
+}
+
+.burgerIcon{
+  display: block;
+  color: var(--color-secondary);
+}
+
+/* full-screen overlay menu */
+.overlay{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 360ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
+  opacity: 0;
+  /* place overlay above the sticky header so it's visible and interactive */
+  z-index: 1000;
+}
+
+.open{
+  pointer-events: auto;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menuInner{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(230,172,145,0.95), rgba(230,172,145,0.95));
+}
+
+/* close button inside overlay (top-right, where the burger was) */
+.overlayCloseButton{
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--color-secondary);
+  padding: 0.5rem;
+  border-radius: 8px;
+  z-index: 1010;
+  display: none; /* shown only when overlay is open via .open class */
+  cursor: pointer;
+}
+
+.open .overlayCloseButton{ display: block; }
+
+/* hover styles: change the icon color itself (svg uses currentColor) */
+.burgerButton:hover,
+.overlayCloseButton:hover{
+  color: #9bf1ff; /* same blue used for logo hover */
+  background-color: transparent; /* keep no background so only lines change */
+}
+
+/* ensure svg inside the burger button respects the hover color (override .burgerIcon rule) */
+.burgerButton:hover .burgerIcon { color: #9bf1ff; }
+
+.menuList{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: center;
+}
+
+/* individual menu item: subtle separator line and smaller link size */
+.menuItem{
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.35rem 0;
+}
+.menuItem:last-child{ border-bottom: none; }
+
+.menuItem a{
+  color: var(--color-secondary);
+  font-size: 0.95rem; /* smaller size per request */
+  font-weight: 700;
+  text-decoration: none; /* no underline by default */
+  padding: 0.2rem 0.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+.menuItem a:hover{
+  color: #000; /* turn black on hover */
+  text-decoration: none;
+}
+
+@media (min-width: 768px){
+  /* slightly larger on wider screens */
+  .menuItem a{ font-size: 1.05rem; }
+}
+
+/* show inline nav on wider screens */
+/* inline nav intentionally hidden on all breakpoints so navigation appears
+   only inside the overlay menu when opened. */

@@ -1,0 +1,61 @@
+/* Styles specific to the Qui sommes nous page. Reuse global tokens and the .container utility. */
+.hero{
+  padding: 48px 0 12px;
+  text-align: left;
+}
+
+.major h1{
+  margin: 0 0 12px 0;
+  font-size: 2.25rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--color-secondary);
+  /* underline like the original design */
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-secondary);
+}
+
+.actionsRow{
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.content{
+  padding: 28px 0 60px;
+}
+
+.row{
+  /* use normal flow so text wraps around floated images */
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.row::after{ content: ''; display: block; clear: both; }
+
+.text{ display: block; }
+.imageWrap{
+  float: right;
+  width: 40%;
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+.imageWrap img{ width: 100%; height: auto; display: block; border-radius: 6px; }
+
+.imageWrap.small{ width: 30%; }
+
+.contactSection{ background: rgba(255,255,255,0.04); padding: 28px 0 60px; }
+.contactInner{ display: flex; gap: 28px; align-items: flex-start; }
+.contactForm{ flex: 1 1 60%; }
+.contactDetails{ flex: 1 1 40%; display: flex; flex-direction: column; gap: 18px; }
+.contactMethod h4{ margin: 0 0 6px 0; }
+.contactMethod address, .contactMethod span, .contactMethod a{ color: var(--color-secondary); }
+
+@media (max-width: 700px){
+  .row, .contactInner{ flex-direction: column; }
+  .actionsRow{ flex-direction: column; }
+  /* remove floats on small screens so image stacks above/below text */
+  .imageWrap{ float: none; width: 100%; margin-left: 0; }
+  .imageWrap.small{ width: 100%; }
+}

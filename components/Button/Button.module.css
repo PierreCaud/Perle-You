@@ -1,0 +1,30 @@
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: transparent;
+  padding: 0.5rem 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  font-size: smaller;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.btn:hover{
+  color: #000000; /* text goes black on hover */
+  border-color: #9bf1ff; /* border turns blue on hover */
+}
+
+.content{ display: inline-block; }
+
+.arrow{ display: inline-flex; align-items: center; color: inherit; }
+
+/* ensure arrow svg uses currentColor so it changes on hover */
+.arrow svg{ display: block; color: currentColor; }
+
+/* when hovered, make arrow blue (inherits from .btn:hover color change for svg currentColor) */
+.btn:hover .arrow{ color: #9bf1ff; }

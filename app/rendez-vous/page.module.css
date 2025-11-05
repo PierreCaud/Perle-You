@@ -1,0 +1,6 @@
+.inner { max-width: 72ch; margin: 0 auto; padding: 0 1rem; }
+
+
+
+.image { display: block; }
+.main img { display: block; max-width: 100%; height: auto; margin-top: 1rem; border-radius: 4px; }

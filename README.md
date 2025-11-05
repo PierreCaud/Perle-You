@@ -20,6 +20,15 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Project structure (starter)
+
+- `app/` - Next.js app router pages and layout
+- `components/` - UI components (Header, Footer, Container)
+- `styles/` - site-wide CSS such as `site.css`
+- `public/` - static assets
+
+I've added a minimal header/footer and a `styles/site.css` file to get you started.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

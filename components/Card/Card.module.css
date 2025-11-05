@@ -1,0 +1,122 @@
+:root{
+  --card-height: 320px;
+}
+
+.card{
+  position: relative;
+  width: 100%;
+  height: var(--card-height);
+  background-size: cover;
+  background-position: center;
+  border-radius: 0;
+  overflow: hidden;
+  display: block;
+}
+
+/* Increase card height on larger viewports so images are less aggressively cropped
+   when the layout becomes wider. Keep mobile sizes unchanged. */
+@media (min-width: 900px){
+  :root{ --card-height: 420px; }
+}
+
+@media (min-width: 1400px){
+  :root{ --card-height: 520px; }
+}
+
+/* animate transform, opacity and filter similarly to the original tiles example */
+.card{
+  transition: transform 350ms ease, opacity 350ms ease, filter 1s ease;
+}
+
+.overlay{
+  /* keep the existing DOM node for compatibility but hide it so pseudo-elements control visuals */
+  display: none;
+}
+
+/* Use pseudo-elements on the card to mimic the original tiles behavior:
+   - :before acts as the main dark veil (opacity animated)
+   - :after provides a colored overlay layer (static or lightly animated)
+*/
+.card:before{
+  transition: opacity 700ms cubic-bezier(.2,.9,.2,1);
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0.85; /* default veil opacity */
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  background: linear-gradient(rgba(0,0,0,0.36), rgba(0,0,0,0.36));
+  will-change: opacity;
+  pointer-events: none;
+}
+
+.card:after{
+  /* color overlay layer. keep background-color controlled via --overlay-color
+     We'll animate opacity so the color can disappear smoothly on hover. */
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: var(--overlay-color, rgba(0,0,0,0.0));
+  opacity: 1;
+  transition: opacity 700ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+/* Keep a subtle veil on hover (not fully transparent). Adjust this value to taste. */
+.card:hover:before{
+  opacity: 0; /* fully disappear on hover */
+}
+
+.card:hover:after{
+  opacity: 0; /* fade the colored overlay out on hover as well */
+}
+
+.content{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 18px 24px 10%; /* left padding 10% per spec */
+  z-index: 20;
+}
+
+.title{
+  color: #fff;
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.bottomBar{
+  position: absolute;
+  height: 3px; /* thinner bar per design */
+  left: 10%; /* start at 10% from left */
+  bottom: 54px; /* sits above subtitle area */
+  background: var(--color-secondary, #fff);
+  width: var(--bar-w, 50%); /* JS sets --bar-w in percent */
+  transition: width 200ms ease;
+  border-radius: 0;
+}
+
+.subtitle{
+  color: rgba(255,255,255,0.95);
+  margin-top: 18px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px){
+  :root{ --card-height: 260px; }
+  .title{ font-size: 1.125rem; }
+  .bottomBar{ height: 3px; bottom: 46px; }
+}
