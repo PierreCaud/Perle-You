@@ -94,6 +94,30 @@ margin-left: 3%;
   background: rgba(255,255,255,0.04);
   padding: 0.35rem 0.6rem;
   border-left: 3px solid rgba(255,255,255,0.08);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure any wrapper divs inside .prices expand and keep spacing when description present */
+.prices > div {
+  display: block;
+}
+
+.prices p {
+  margin: 0.25rem 0 0 0;
+}
+
+/* priceLine inner title/description */
+.priceLine .priceTitle{
+  font-weight: 600;
+}
+.priceLine .priceDesc{
+  margin-top: 0.25rem;
+  color: #8f9299; /* gray-500 */
+  font-style: italic;
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.2;
 }
 
 .actions{
