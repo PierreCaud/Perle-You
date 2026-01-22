@@ -17,9 +17,9 @@ export default function Home() {
       {/* Banner with warm overlay (no blue) */}
       <section>
         <div className="container" style={{ padding: '6rem 1rem', color: 'var(--color-secondary)' }}>
-          <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 800 }}>Institut Perle et Douceur</h1>
+          <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 800 }}>Institut Perle & You Douceur</h1>
           <p style={{ maxWidth: 720, marginTop: '1rem', color: 'rgba(255,255,255,0.95)' }}>
-            Chez Perle et Douceur, &eacute;vadez-vous dans un univers de d&eacute;tente. Laissez-vous accompagner
+            Chez Perle & You Douceur, &eacute;vadez-vous dans un univers de d&eacute;tente. Laissez-vous accompagner
             par nos professionnelles de la beaut&eacute; dans une bulle de bien-&ecirc;tre et de s&eacute;r&eacute;nit&eacute;.
           </p>
           <div style={{ marginTop: 18 }}>

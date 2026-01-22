@@ -14,7 +14,7 @@ export default function QuiSommesNousPage() {
       <section className={styles.content}>
         <h2 className="u-section-title">Des services de qualité</h2>
         <p>
-          D&eacute;couvrez l&apos;excellence de notre institut Perle et Douceur, o&ugrave; chaque soin est une exp&eacute;rience unique d&eacute;di&eacute;e &agrave; votre bien-&ecirc;tre. Nos expertes
+          D&eacute;couvrez l&apos;excellence de notre institut Perle & You Douceur, o&ugrave; chaque soin est une exp&eacute;rience unique d&eacute;di&eacute;e &agrave; votre bien-&ecirc;tre. Nos expertes
           passionn&eacute;es utilisent des produits de qualit&eacute; et des techniques innovantes pour sublimer votre beaut&eacute; naturelle. Que ce soit pour un soin
           du visage, une manucure ou un massage relaxant, nous vous offrons un moment de d&eacute;tente et de revitalisation dans un cadre &eacute;l&eacute;gant et
           chaleureux. Faites confiance &agrave; notre savoir-faire et offrez-vous le luxe d&rsquo;une beaut&eacute; sans compromis.

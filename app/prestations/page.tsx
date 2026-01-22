@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Button from "../../components/Button";
 import styles from "./page.module.css";
 
@@ -74,16 +74,6 @@ const SERVICES = [
       "https://calendly.com/your-calendar/onglerie",
   },
   {
-    id: "maquillage",
-    title: "Maquillage",
-    image: "/images/pic05..jpg",
-    description: "Dans notre salon esthétique, nous vous offrons des prestations de maquillage personnalisées pour sublimer votre beauté naturelle. Que ce soit pour un maquillage de jour subtil, un maquillage de soirée glamour ou pour un événement spécial, nos experts en maquillage sauront mettre en valeur vos traits avec des produits de qualité et des techniques professionnelles. Nous vous garantissons un maquillage impeccable, durable et adapté à vos préférences, pour que vous vous sentiez belle et confiante en toutes occasions.",
-    prices: ["Evènement spécial (Mariage, ...)", "Maquillage de jour", "Maquillage de soirée"],
-    calendly:
-      process.env.NEXT_PUBLIC_CALENDLY_MAQUILLAGE || process.env.NEXT_PUBLIC_CALENDLY_URL ||
-      "https://calendly.com/your-calendar/maquillage",
-  },
-  {
     id: "soins-specifiques",
     title: "Soins spécifiques",
     image: "/images/pic06..webp",
@@ -95,20 +85,95 @@ const SERVICES = [
   },
 ];
 
-export default function PrestationsPage() {
+export default async function PrestationsPage() {
   const BASE_CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/your-calendar";
 
-  // slugify a price string into a URL-friendly token, e.g. "Modelage corps 30 min : 28€" -> "modelage-corps-30-min-28"
-  const slugify = (str: string) =>
-    str
-      .normalize("NFD")
-      .replace(/\p{Diacritic}/gu, "") // remove accents
-      .toLowerCase()
-      .replace(/€/g, "euro")
-      .replace(/[:\s]+/g, "-")
-      .replace(/[^a-z0-9-]/g, "")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "");
+  // (No slugify needed — we use scheduling_url or service.calendly)
+
+  // fetch events from our API and group by color->category (server-side)
+  let groupedElements: JSX.Element[] = [];
+  let serviceEvents: Record<string, any[]> = {};
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/calendly`, { cache: "no-store", next: { revalidate: 0 } });
+    let events: any[] = [];
+    if (res.ok) {
+      events = (await res.json()) as any[];
+
+      const colorMap: Record<string, string> = {
+        "#f8e436": "Épilations",
+        "#8247f5": "Teinture",
+        "#ff758e": "Onglerie",
+        "#0ae8f0": "Soins visage",
+        "#ccf000": "Soins pieds",
+        "#ff4f00": "Soins du corps Thalac",
+        "#ffa600": "Modelage corps",
+      };
+
+      const categoryToServiceId: Record<string, string> = {
+        "Épilations": "epilations",
+        "Teinture": "soins-specifiques",
+        "Onglerie": "onglerie",
+        "Soins visage": "soins-visage",
+        "Soins pieds": "modelages",
+        "Soins du corps Thalac": "modelages",
+        "Modelage corps": "modelages",
+      };
+
+      const grouped = events.reduce((acc: Record<string, { color: string; items: any[] }>, ev) => {
+        const color = (ev.color ?? "").toLowerCase();
+        const label = colorMap[color] ?? "Autres";
+        if (!acc[label]) acc[label] = { color: ev.color ?? "#e5e7eb", items: [] };
+        acc[label].items.push(ev);
+        return acc;
+      }, {} as Record<string, { color: string; items: any[] }>);
+
+      // build service -> events map so we can replace static prices per service
+      serviceEvents = {};
+      for (const ev of events) {
+        const color = ((ev.color ?? "") as string).toLowerCase();
+        const label = colorMap[color] ?? "Autres";
+        const sid = categoryToServiceId[label];
+        if (sid) {
+          if (!serviceEvents[sid]) serviceEvents[sid] = [];
+          serviceEvents[sid].push(ev);
+        }
+      }
+
+      groupedElements = Object.entries(grouped).map(([label, { color, items }]) => {
+        const service = SERVICES.find((s) => s.id === categoryToServiceId[label]);
+        return (
+          <article key={label} className={styles.spot}>
+            <div className={styles.imageLink} aria-hidden>
+              <img src={service?.image ?? "/images/pic01..jpg"} alt={label} />
+            </div>
+
+            <div className={styles.content}>
+              <header>
+                <h3 className="u-section-title">{label}</h3>
+              </header>
+
+              <p>{service?.description ?? ""}</p>
+
+              <div className={styles.prices}>
+                {items.map((ev) => (
+                  <a key={ev.scheduling_url} className={styles.priceLine} href={ev.scheduling_url} target="_blank" rel="noreferrer">
+                    <div className={styles.priceTitle}>{ev.name}</div>
+                    {ev.description && (
+                      <div className={styles.priceDesc}>{ev.description}</div>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        );
+      });
+    } else {
+      groupedElements = [<p key="err">Calendly API error ({res.status})</p>];
+    }
+  } catch (err) {
+    groupedElements = [<p key="err">Impossible de charger les prestations depuis Calendly.</p>];
+  }
 
   return (
     <main>
@@ -160,16 +225,23 @@ export default function PrestationsPage() {
                 <p>{s.description}</p>
 
                 <div className={styles.prices}>
-                  {s.prices.map((p) => {
-                    const slug = slugify(p);
-                    // build URL like: BASE_CALENDLY/<service-id>/<slug>
-                    const url = `${BASE_CALENDLY.replace(/\/$/, "")}/${encodeURIComponent(s.id)}/${encodeURIComponent(slug)}`;
-                    return (
-                      <a key={p} className={styles.priceLine} href={url} target="_blank" rel="noreferrer">
-                        {p}
+                  {((serviceEvents && serviceEvents[s.id]) || []).length > 0 ? (
+                    (serviceEvents[s.id] || []).map((ev) => (
+                      <a key={ev.scheduling_url} className={styles.priceLine} href={ev.scheduling_url} target="_blank" rel="noreferrer">
+                        <div className={styles.priceTitle}>{ev.name}</div>
+                        {ev.description && <div className={styles.priceDesc}>{ev.description}</div>}
                       </a>
-                    );
-                  })}
+                    ))
+                  ) : (
+                    s.prices.map((p) => {
+                      const url = s.calendly || BASE_CALENDLY.replace(/\/$/, "");
+                      return (
+                        <a key={p} className={styles.priceLine} href={url} target="_blank" rel="noreferrer">
+                          {p}
+                        </a>
+                      );
+                    })
+                  )}
                 </div>
               </div>
             </article>

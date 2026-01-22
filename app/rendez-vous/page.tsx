@@ -1,7 +1,21 @@
 import React from "react";
 import styles from "./page.module.css";
 
+interface CalendlyEvent {
+  name: string;
+  description: string | null;
+  scheduling_url: string;
+  duration: number;
+  pooling_type: string | null;
+  color?: string | null;
+  slug?: string | null;
+  uri?: string | null;
+  position?: number | null;
+  type?: string | null;
+}
+
 export default function RendezVousPage() {
+
   return (
     <main className="container">
       <section>
@@ -11,7 +25,7 @@ export default function RendezVousPage() {
           </header>
 
           <p>
-            Chez Perle et Douceur, bénéficiez d&apos;un service professionnel et de qualit&eacute;. Laissez-vous
+            Chez Perle & You Douceur, bénéficiez d&apos;un service professionnel et de qualit&eacute;. Laissez-vous
             chouchouter par nos esth&eacute;ticiennes diplômées et plongez dans un univers de douceur. Nos soins
             exclusifs et personnalisés sauront vous d&eacute;tendre.
           </p>
@@ -22,7 +36,7 @@ export default function RendezVousPage() {
             peau.
           </p>
 
-          <p>Laissez-vous emporter dans l&apos;univers du bien-&ecirc;tre chez Perle et Douceur!</p>
+          <p>Laissez-vous emporter dans l&apos;univers du bien-&ecirc;tre chez Perle & You Douceur!</p>
 
           <h3 className="u-subtitle">Remplissez le cadre en bas de page pour prendre rendez-vous</h3>
 
@@ -31,6 +45,15 @@ export default function RendezVousPage() {
           </span>
         </div>
       </section>
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">Prendre rendez-vous</h1>
+
+      <p>
+        Pour consulter les prestations et prendre rendez-vous par catégorie, rendez-vous sur la page
+        <a href="/prestations" className="underline ml-2">Prestations</a>.
+      </p>
+    </div>
     </main>
   );
 }
+
