@@ -35,7 +35,6 @@ export default function Header() {
             {/* desktop nav (visible on wide screens) */}
             <nav className={styles.siteNav} aria-label="Main navigation">
               <Link href="/prestations">Prestations</Link>
-              <Link href="/rendez-vous">Rendez-vous</Link>
               <Link href="/qui-sommes-nous">Qui sommes nous</Link>
               <Link href="/nos-photos">Nos photos</Link>
               <Link href="/avis">Avis</Link>
@@ -107,11 +106,6 @@ export default function Header() {
             <li className={styles.menuItem}>
               <Link href="/prestations" onClick={() => setOpen(false)}>
                 Prestations
-              </Link>
-            </li>
-            <li className={styles.menuItem}>
-              <Link href="/rendez-vous" onClick={() => setOpen(false)}>
-                Rendez-vous
               </Link>
             </li>
             <li className={styles.menuItem}>

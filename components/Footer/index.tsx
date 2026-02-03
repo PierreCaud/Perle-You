@@ -14,12 +14,12 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul className={styles.contactList}>
               <li>
-                <a href="mailto:perle.caudreliez@etudiant.univ-reims.fr" className={styles.contactLink} aria-label="Envoyer un email">
+                <a href="mailto:institut.perleandyou@gmail.com" className={styles.contactLink} aria-label="Envoyer un email">
                   <svg className={styles.icon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                     <path d="M3 6.5L12 13L21 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
-                  <span>perle.caudreliez@etudiant.univ-reims.fr</span>
+                  <span>institut.perleandyou@gmail.com</span>
                 </a>
               </li>
 
@@ -41,7 +41,7 @@ export default function Footer() {
                   <span>
                     Institut Perle & You
                     <br />
-                    08000 Charleville-Mézières
+                    Allée des Bouleaux, 08000 Charleville-Mézières
                     <br />
                     FRANCE
                   </span>
@@ -53,13 +53,7 @@ export default function Footer() {
           <div className={styles.rightCol}>
             {/* Small embedded Google Map (hidden on very small screens) */}
             <div className={styles.mapEmbed} aria-hidden>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d659298.0587272118!2d3.5588836669921813!3d49.79766604866522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ea0f091cce7fbb%3A0xe6c6cdb3b966a495!2sInstitut%20Perle%20%26%20You!5e0!3m2!1sfr!2sfr!4v1762341097425!5m2!1sfr!2sfr"
-                title="Plan Institut Perle & You"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1287.7201086620148!2d4.714669270333039!3d49.79659102040661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ea0f091cce7fbb%3A0xe6c6cdb3b966a495!2sInstitut%20Perle%20%26%20You%20(sur%20rdv%20uniquement)!5e0!3m2!1sfr!2sfr!4v1770131772936!5m2!1sfr!2sfr" width="600" height="450" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div className={styles.socialRow}>

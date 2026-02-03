@@ -79,7 +79,6 @@ export async function GET() {
         );
       }
       const data = (await response.json()) as CalendlyAPIResponse;
-      console.log(data);
 
       if (Array.isArray(data.collection)) {
         for (const ev of data.collection) {
