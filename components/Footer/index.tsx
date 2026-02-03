@@ -14,12 +14,12 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul className={styles.contactList}>
               <li>
-                <a href="mailto:perle.caudreliez@etudiant.univ-reims.fr" className={styles.contactLink} aria-label="Envoyer un email">
+                <a href="mailto:institut.perleandyou@gmail.com" className={styles.contactLink} aria-label="Envoyer un email">
                   <svg className={styles.icon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                     <path d="M3 6.5L12 13L21 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
-                  <span>perle.caudreliez@etudiant.univ-reims.fr</span>
+                  <span>institut.perleandyou@gmail.com</span>
                 </a>
               </li>
 
@@ -41,7 +41,7 @@ export default function Footer() {
                   <span>
                     Institut Perle & You
                     <br />
-                    08000 Charleville-Mézières
+                    Allée des Bouleaux, 08000 Charleville-Mézières
                     <br />
                     FRANCE
                   </span>

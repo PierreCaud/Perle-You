@@ -17,10 +17,9 @@ export default function Home() {
       {/* Banner with warm overlay (no blue) */}
       <section>
         <div className="container" style={{ padding: '6rem 1rem', color: 'var(--color-secondary)' }}>
-          <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 800 }}>Institut Perle & You Douceur</h1>
+          <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 800 }}>Institut Perle & You</h1>
           <p style={{ maxWidth: 720, marginTop: '1rem', color: 'rgba(255,255,255,0.95)' }}>
-            Chez Perle & You Douceur, &eacute;vadez-vous dans un univers de d&eacute;tente. Laissez-vous accompagner
-            par nos professionnelles de la beaut&eacute; dans une bulle de bien-&ecirc;tre et de s&eacute;r&eacute;nit&eacute;.
+            Chez Perle & You, révélez la perle rare cachée en vous. Laissez-vous accompagner par nos professionnelles de la beauté dans une bulle de bien-être et de sérénité pour un moment pensé rien que pour vous.
           </p>
           <div style={{ marginTop: 18 }}>
             <Button href="/qui-sommes-nous">Qui sommes-nous ?</Button>
@@ -40,14 +39,12 @@ export default function Home() {
           <Mosaic items={ITEMS} />
         </section>
 
-        {/* Certifications */}
+        {/* NOS ENGAGEMENTS */}
         <section style={{ padding: '2.5rem 0' }}>
           <div className="container">
-            <h2 style={{ fontSize: '2rem', textDecoration: 'underline', textUnderlineOffset: '8px', marginBottom: 12 }}>Certifications</h2>
+            <h2 style={{ fontSize: '2rem', textDecoration: 'underline', textUnderlineOffset: '8px', marginBottom: 12 }}>NOS ENGAGEMENTS</h2>
             <p>
-              Notre institut d&apos;esth&eacute;tique est fier de ses labels qualit&eacute;, garantissant ses formations et services.
-              Ces labels attestent de notre engagement &agrave; offrir des prestations de haut niveau, alliant expertise,
-              s&eacute;curit&eacute; et satisfaction client. Choisir notre institut, c&apos;est opter pour une exp&eacute;rience de qualit&eacute;, reconnue et fiable, qui vous permet de b&eacute;n&eacute;ficier des meilleures techniques et pratiques esth&eacute;tiques.
+              Notre institut d'esthétique est fier de vous garantir la qualité de ses formations et services. La qualité des prestations repose sur une sélection rigoureuse de produits conformes aux normes européennes, et sur l’utilisation de marques françaises reconnues telles que <strong>Thalac</strong> et <strong>M’Nails</strong>. Les esthéticiennes sont formées aux protocoles professionnels et au strict respect des règles d’hygiène, afin de garantir des soins sûrs, maîtrisés et réalisés dans les meilleures conditions, pour une expérience en toute confiance.
             </p>
             <div style={{ marginTop: 12 }}>
               <Button href="/qui-sommes-nous" arrow>En savoir plus</Button>

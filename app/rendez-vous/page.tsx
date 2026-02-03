@@ -25,7 +25,7 @@ export default function RendezVousPage() {
           </header>
 
           <p>
-            Chez Perle & You Douceur, bénéficiez d&apos;un service professionnel et de qualit&eacute;. Laissez-vous
+            Chez Perle & You, bénéficiez d&apos;un service professionnel et de qualit&eacute;. Laissez-vous
             chouchouter par nos esth&eacute;ticiennes diplômées et plongez dans un univers de douceur. Nos soins
             exclusifs et personnalisés sauront vous d&eacute;tendre.
           </p>
@@ -36,7 +36,7 @@ export default function RendezVousPage() {
             peau.
           </p>
 
-          <p>Laissez-vous emporter dans l&apos;univers du bien-&ecirc;tre chez Perle & You Douceur!</p>
+          <p>Laissez-vous emporter dans l&apos;univers du bien-&ecirc;tre chez Perle & You!</p>
 
           <h3 className="u-subtitle">Remplissez le cadre en bas de page pour prendre rendez-vous</h3>
 
