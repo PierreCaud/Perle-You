@@ -11,35 +11,43 @@ export default function AvisPage() {
             <p className="muted">Retrouvez les avis laissés par nos clientes et clients.</p>
           </header>
 
-          <div className={styles.heroQuote}>
-            <p className="lead">"Un accueil chaleureux et une équipe professionnelle ! Je suis ravie de ma prestation, les soins étaient adaptés à mes besoins et réalisés avec soin. L'institut est un véritable havre de paix, je recommande vivement !"</p>
-          </div>
-
           <div className={styles.grid}>
             <div>
               <p>Si vous souhaitez laisser un avis, vous pouvez le faire directement sur notre fiche Google.</p>
               <p>
-                <a href="https://maps.app.goo.gl/rfYqjVhqUMjFaqyE9" target="_blank" rel="noopener noreferrer">Voir la fiche Google</a>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5150.897562245427!2d4.714702!3d49.79643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ea0f091cce7fbb%3A0xe6c6cdb3b966a495!2sInstitut%20Perle%20%26%20You%20(sur%20rdv%20uniquement)!5e0!3m2!1sfr!2sfr!4v1770131945168!5m2!1sfr!2sfr" width="800" height="600"  loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </p>
-              <p className={styles.lead}>Ci-dessous quelques avis clientèle.</p>
-
-              <div className={styles.reviews}>
-                <h3 className="u-section-title">Avis clientèle</h3>
-                <ul className={styles.reviewList}>
-                  <li className={styles.reviewItem}><p className="lead">"Un accueil chaleureux et une équipe professionnelle ! Je suis ravie de ma prestation, les soins étaient adaptés à mes besoins et réalisés avec soin. L'institut est un véritable havre de paix, je recommande vivement !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Une expérience magnifique à chaque visite ! Les esthéticiennes sont à l'écoute et très compétentes. Les produits utilisés sont de qualité et l'ambiance est toujours agréable. Je ne me lasse jamais de venir ici."</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Un institut au top ! Le soin du visage que j'ai reçu a fait des merveilles sur ma peau. Les conseils personnalisés sont précieux et je ressors toujours détendue et radieuse. Je n'hésite pas à recommander cet endroit à toutes mes amies !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Je suis venue pour un soin relaxant et je suis sortie complètement revitalisée ! Le personnel est super, très professionnel et accueillant. Le cadre est apaisant, je me suis sentie vraiment choyée. Je reviendrai sans hésiter !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Un moment de pure détente ! J'ai opté pour un massage et des soins du corps, et je suis plus que satisfaite du résultat. L'équipe est très attentionnée et prend le temps de répondre à toutes mes questions. Je recommande cet institut à 100% !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Un service impeccable à chaque visite ! L’équipe est toujours souriante, professionnelle et attentive à mes besoins. Les soins sont de qualité, et l’atmosphère est tellement apaisante. J'adore venir ici, c'est un vrai moment de plaisir !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Cet institut est un véritable paradis pour se détendre ! Les soins sont réalisés avec une grande expertise et les résultats sont toujours au rendez-vous. Je suis ravie de l’accueil et de la qualité des services, je recommande à 100% !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Une expérience exceptionnelle ! L’équipe est toujours à l'écoute et adapte les soins en fonction de mes besoins. Les produits utilisés sont de qualité et j’ai vu une réelle différence sur ma peau après seulement quelques séances. Je reviendrai régulièrement, c'est certain !"</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"Un institut que je recommande vivement ! Les esthéticiennes sont très professionnelles et chaleureuses, elles me mettent toujours à l'aise. L'endroit est agréable et les soins sont top. Je me sens toujours bien après chaque visite."</p></li>
-                  <li className={styles.reviewItem}><p className="lead">"J'ai adoré mon soin du visage ! Ma peau n'a jamais été aussi éclatante et hydratée. L’équipe est compétente et sait vraiment ce dont ma peau a besoin. Le cadre est très agréable, parfait pour se détendre. Je reviendrai sans hésiter !"</p></li>
-                </ul>
-              </div>
+              <h2 className={styles.lead}>Ci-dessous quelques avis clientèle.</h2>
             </div>
           </div>
+
+            <div className={styles.grid}>
+            <ul className={styles.reviewsList}>
+              <li className={styles.heroQuote}>
+                <h3 className={styles.reviewAuthor}>Aaliyah L. <span className={styles.rating}>⭐⭐⭐⭐⭐</span></h3>
+                <p className={styles.reviewText}>
+                  Je vais souvent dans cet institut pour les ongles et l’épilation, et je recommande vraiment Perle. Elle est douce, à l’écoute et très professionnelle. Les ongles sont toujours magnifiques, le travail est soigné et tient dans le temps. L’épilation est faite avec beaucoup de délicatesse. On se sent à l’aise du début à la fin. Un vrai moment de bien-être à chaque rendez-vous ! 💅
+                </p>
+                <p className={styles.services}><strong>Services:</strong> Épilation à la cire, Manucure</p>
+              </li>
+
+              <li className={styles.heroQuote}>
+                <h3 className={styles.reviewAuthor}>Anne-Marie D. <span className={styles.rating}>⭐⭐⭐⭐⭐</span></h3>
+                <p className={styles.reviewText}>
+                  Esthéticienne super ! Je recommande l'institut sans hésiter, rendez-vous rapides et répondant pleinement à mes attentes. Un grand merci à Perle pour son professionnalisme !
+                </p>
+                <p className={styles.services}><strong>Services:</strong> Épilation à la cire, Manucure</p>
+              </li>
+
+              <li className={styles.heroQuote}>
+                <h3 className={styles.reviewAuthor}>Chloé H. <span className={styles.rating}>⭐⭐⭐⭐⭐</span></h3>
+                <p className={styles.reviewText}>
+                  Un super accueil dans un lieu très chaleureux, Perle est à l'écoute de nos besoins. Chaque moment passé à l'institut est une bulle de douceur — ne réfléchissez plus, foncez chez Perle & You.
+                </p>
+                <p className={styles.services}><strong>Services:</strong> Épilation à la cire, Massage</p>
+              </li>
+            </ul>
+            </div>
         </div>
       </section>
     </main>
